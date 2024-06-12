@@ -18,14 +18,21 @@ struct Menu: View {
             Text("This is a cute family restaurant with mediterranian food")
             
             FetchedObjects() { (dishes: [Dish]) in
-                List{
-                    ForEach(dishes) {dish in
+                List {
+                    ForEach(dishes) { dish in
+                        //                        NavigationLink(value: dish) {
+                        //                            DishDetails(dish: dish)
+                        //                        }
                         HStack {
-                            Text(dish.title ?? "title")
-                            Text(dish.price ?? "price")
-                            Text(dish.dishDescription ?? "description")
-                            AsyncImage(url: URL(string: dish.image ?? ""))
-                                    .frame(width: 100, height: 100)
+                            Text(dish.title!)
+                            Text(dish.price!)
+                            Text(dish.dishDescription!)
+                            AsyncImage(url: URL(string: dish.image!)) { result in
+                                result.image?
+                                    .resizable()
+                                    .scaledToFit()
+                            }
+                            .frame(width: 50, height: 50)
                         }
                     }
                 }
@@ -38,5 +45,5 @@ struct Menu: View {
 }
 
 #Preview {
-    Menu().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+    Menu()
 }

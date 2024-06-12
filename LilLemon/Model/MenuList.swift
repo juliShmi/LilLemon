@@ -12,27 +12,36 @@ struct MenuList: Codable {
     let menu: [MenuItem]
     
     static func getMenuData(viewContext: NSManagedObjectContext) {
-       // PersistenceController.shared.clear()
-        
-        let url = URL(string: "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json")
-        let urlRequest = URLRequest(url: url!)
-        let downLoadTask = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            if let data = data {
-                let decoder = JSONDecoder()
-                if let result =  try? decoder.decode(MenuList.self, from: data) {
-                    for menuItem in result.menu {
-                        let dish = Dish(context: viewContext)
-                        dish.title = menuItem.title
-                        dish.id = menuItem.id
-                        dish.image = menuItem.image
-                        dish.price = menuItem.price
-                        dish.dishDescription = menuItem.description
-                        dish.category = menuItem.category
+            PersistenceController.shared.clear()
+            let serverURLString = "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/menu.json"
+            let url = URL(string: serverURLString)
+            guard let url = url else {
+                print("Invalid server URL")
+                return
+            }
+                
+            let request = URLRequest(url: url)
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                if let data = data {
+                    do {
+                        let decoder = JSONDecoder()
+                        let menuList = try decoder.decode(MenuList.self, from: data)
+                            
+                        for menuItem in menuList.menu {
+                            let dish = Dish(context: viewContext)
+                            dish.title = menuItem.title
+                            dish.price = menuItem.price
+                            dish.image = menuItem.image
+                            dish.dishDescription = menuItem.description
+                            dish.category = menuItem.category
+                            dish.id = menuItem.id
+                        }
+                        try? viewContext.save()
+                    } catch {
+                        print("Error decoding menu data: \(error)")
                     }
-                    try? viewContext.save()
                 }
             }
+            task.resume()
         }
-        downLoadTask.resume()
-    }
 }

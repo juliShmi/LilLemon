@@ -21,5 +21,5 @@ struct Onboarding: View {
 }
 
 #Preview {
-    Onboarding().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+    Onboarding()
 }
