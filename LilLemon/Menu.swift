@@ -10,38 +10,36 @@ import CoreData
 
 struct Menu: View {
     @Environment(\.managedObjectContext) private var viewContext
+    @State var menuShown = false
     
     var body: some View {
-        VStack {
-            Text("Little Lemon")
-            Text("Chicago")
-            Text("This is a cute family restaurant with mediterranian food")
-            
-            FetchedObjects() { (dishes: [Dish]) in
-                List {
-                    ForEach(dishes) { dish in
-                        //                        NavigationLink(value: dish) {
-                        //                            DishDetails(dish: dish)
-                        //                        }
-                        HStack {
-                            Text(dish.title!)
-                            Text(dish.price!)
-                            Text(dish.dishDescription!)
-                            AsyncImage(url: URL(string: dish.image!)) { result in
-                                result.image?
-                                    .resizable()
-                                    .scaledToFit()
+        NavigationStack {
+            VStack {
+                Text("Little Lemon")
+                Text("Chicago")
+                Text("This is a cute family restaurant with mediterranian food")
+                
+                FetchedObjects() { (dishes: [Dish]) in
+                    List {
+                        ForEach(dishes) { dish in
+                            NavigationLink(destination: DishDetails(dish: dish)) {
+                                DishItem(dish: dish)
                             }
-                            .frame(width: 50, height: 50)
                         }
                     }
                 }
+                .navigationTitle("Menu")
+                .listStyle(.grouped)
             }
+            
         }.onAppear {
-            MenuList.getMenuData(viewContext: viewContext)
+            if(!menuShown) {
+                MenuList.getMenuData(viewContext: viewContext)
+                menuShown = true
+            }
         }
     }
-                           
+    
 }
 
 #Preview {

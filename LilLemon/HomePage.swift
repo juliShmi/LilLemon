@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct HomePage: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        @Environment(\.managedObjectContext) private var viewContext
+        let persistence = PersistenceController.shared
+        
+        var body: some View {
+            TabView {
+                Menu()
+                    .environment(\.managedObjectContext, persistence.container.viewContext)
+                    .tabItem { Label("Menu", systemImage: "list.dash") }
+                UserProfile()
+                    .tabItem { Label("Profile", systemImage: "square.and.pencil") }
+            }.navigationBarBackButtonHidden()
+        }
     }
-}
 
 #Preview {
     HomePage()

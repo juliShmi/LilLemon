@@ -7,15 +7,47 @@
 
 import SwiftUI
 
+let keyFirstName = "keyFirstName";
+let keyLastName = "keyLastName";
+let keyEmail = "keyEmail"
+let keyIsLoggedIn = "keyIsLoggedIn"
+
+
 struct Onboarding: View {
     @Environment(\.managedObjectContext) private var viewContext
-    let persistence = PersistenceController.shared
+    
+    @State var firstName = "";
+    @State var lastName = "";
+    @State var email = "";
+    @State var isLoggedIn = false
     
     var body: some View {
-        TabView {
-            Menu()
-                .environment(\.managedObjectContext, persistence.container.viewContext)
-                .tabItem { Label("Menu", systemImage: "list.dash") }
+        NavigationStack {
+            VStack {
+                TextField("First name", text: $firstName)
+                TextField("Last name", text: $lastName)
+                TextField("E-Mail", text: $email)
+                Button("Register") {
+                    if (!firstName.isEmpty
+                        && !lastName.isEmpty
+                        && !email.isEmpty) {
+                        UserDefaults.standard.set(firstName, forKey: keyFirstName);
+                        UserDefaults.standard.set(lastName, forKey: keyLastName);
+                        UserDefaults.standard.set(email, forKey: keyEmail);
+                        UserDefaults.standard.set(true, forKey: keyIsLoggedIn)
+                        isLoggedIn = true
+                    }
+                }
+            }
+            .padding()
+            .onAppear {
+                if UserDefaults.standard.bool(forKey: "keyIsLoggedIn") {
+                        isLoggedIn = true
+                    }
+            }.navigationDestination(isPresented: $isLoggedIn) {
+                HomePage()
+            }
+            .autocorrectionDisabled()
         }
     }
 }

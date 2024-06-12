@@ -8,20 +8,32 @@
 import SwiftUI
 
 struct DishDetails: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     let dish: Dish
     
     var body: some View {
-        List {
-            Text(dish.title!)
-            Text(dish.price!)
-            Text(dish.dishDescription!)
-            //            AsyncImage(url: URL(string: dish.image ?? ""))
-            //                            .frame(width: 100, height: 100)
+        VStack {
+            AsyncImage(url: URL(string: dish.image!)) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
+            .clipShape(Rectangle())
+            .frame(minHeight: 150)
             
-        }.navigationTitle(dish.title!)
+            Text(dish.dishDescription!).padding()
+            
+          //  Button("Add to order") {}.buttonStyle(.borderedProminent)
+            Spacer()
+        }
+        .navigationTitle(dish.title!)
+        .navigationBarTitleDisplayMode(.large)
     }
 }
 
 #Preview {
-    DishDetails(dish: Dish())
+    DishDetails(dish: PersistenceController.getExampleDish())
 }
