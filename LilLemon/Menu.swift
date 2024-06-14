@@ -50,7 +50,7 @@ struct Menu: View {
                 MenuList.getMenuData(viewContext: viewContext)
                 menuShown = true
             }
-        }
+        }.navigationBarBackButtonHidden()
     }
 }
 
