@@ -31,16 +31,27 @@ struct UserProfile: View {
                         .clipShape(Circle())
                         .overlay(Circle().stroke(.yellow, lineWidth: 2))
                         .frame(width: 150, height: 150)
-                    Button("Change") {}
-                    Button("Remove"){}
+                    Button("Change") {}.buttonStyle(.bordered)
+                    Button("Remove"){}.buttonStyle(.bordered)
                 }
             }
-            Section {
+            Section("Name") {
                 TextField("First name", text: $firstName)
-                TextField("Last name", text: $lastName)
-                TextField("E-Mail", text: $email)
-                TextField("Phone number", text: $phoneNumber)
+                    .textFieldStyle(.roundedBorder)
             }
+            Section("Last name") {
+                TextField("Last name", text: $lastName)
+                    .textFieldStyle(.roundedBorder)
+            }
+            Section("E-Mail") {
+                TextField("E-Mail", text: $email)
+                    .textFieldStyle(.roundedBorder)
+            }
+            Section("Phone number") {
+                TextField("Phone number", text: $phoneNumber)
+                    .textFieldStyle(.roundedBorder)
+            }
+            Spacer()
             Section("Email notifications") {
                 Toggle("Order Statuses", isOn: $orderStatus)
                     .toggleStyle(CheckToggleStyle())
@@ -51,12 +62,13 @@ struct UserProfile: View {
                 Toggle("Newsletter", isOn: $newsletter)
                     .toggleStyle(CheckToggleStyle())
             }.font(.custom("Markazi text", fixedSize: 18))
+            Spacer()
             Section {
                 VStack {
                     Button("Log out") {
                         UserDefaults.standard.set(false, forKey: "keyIsLoggedIn")
                         self.presentation.wrappedValue.dismiss()
-                    }
+                    }.buttonStyle(.borderedProminent)
                     HStack {
                         Button("Discard changes") {
                             firstName = UserDefaults.standard.string(forKey: "keyFirstName") ?? ""
@@ -68,7 +80,7 @@ struct UserProfile: View {
                             passwordChanges = UserDefaults.standard.bool(forKey: "keyPasswordChanges")
                             specialOffers = UserDefaults.standard.bool(forKey: "keySpecialOffers")
                             newsletter = UserDefaults.standard.bool(forKey: "keyNewsletter")
-                        }
+                        }.buttonStyle(.bordered)
                         Button("Save changes") {
                             UserDefaults.standard.set(firstName, forKey: keyFirstName);
                             UserDefaults.standard.set(lastName, forKey: keyLastName);
@@ -78,11 +90,10 @@ struct UserProfile: View {
                             UserDefaults.standard.set(specialOffers, forKey: keySpecialOffers)
                             UserDefaults.standard.set(passwordChanges, forKey: keyPasswordChanges)
                             UserDefaults.standard.set(newsletter, forKey: keyNewsletter)
-                        }
+                        }.buttonStyle(.borderedProminent)
                     }
                 }
             }
-            Spacer()
         }.padding()
     }
 }

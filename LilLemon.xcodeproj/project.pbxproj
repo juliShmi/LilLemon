@@ -27,6 +27,7 @@
 		DF8FC5782C1A0EB500917CDF /* DishItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC5772C1A0EB500917CDF /* DishItem.swift */; };
 		DF8FC57A2C1A29F800917CDF /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC5792C1A29F800917CDF /* HomePage.swift */; };
 		DF8FC57C2C1A2E2B00917CDF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC57B2C1A2E2B00917CDF /* UserProfile.swift */; };
+		DF8FC57E2C1C8ECD00917CDF /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC57D2C1C8ECD00917CDF /* Hero.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		DF8FC5772C1A0EB500917CDF /* DishItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishItem.swift; sourceTree = "<group>"; };
 		DF8FC5792C1A29F800917CDF /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		DF8FC57B2C1A2E2B00917CDF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		DF8FC57D2C1C8ECD00917CDF /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 				DF8FC5772C1A0EB500917CDF /* DishItem.swift */,
 				DF8FC5792C1A29F800917CDF /* HomePage.swift */,
 				DF8FC57B2C1A2E2B00917CDF /* UserProfile.swift */,
+				DF8FC57D2C1C8ECD00917CDF /* Hero.swift */,
 			);
 			path = LilLemon;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				DF8FC57C2C1A2E2B00917CDF /* UserProfile.swift in Sources */,
 				BB20B27B2C18B47800ED5CF1 /* Persistence.swift in Sources */,
 				BB20B2722C18B47700ED5CF1 /* LilLemonApp.swift in Sources */,
+				DF8FC57E2C1C8ECD00917CDF /* Hero.swift in Sources */,
 				DF8FC5782C1A0EB500917CDF /* DishItem.swift in Sources */,
 				BB20B2B42C18D43000ED5CF1 /* Menu.swift in Sources */,
 				DF8FC57A2C1A29F800917CDF /* HomePage.swift in Sources */,

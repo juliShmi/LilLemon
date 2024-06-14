@@ -31,9 +31,13 @@ struct Onboarding: View {
         NavigationStack {
             VStack {
                 TextField("First name", text: $firstName)
+                    .textFieldStyle(.roundedBorder)
                 TextField("Last name", text: $lastName)
+                    .textFieldStyle(.roundedBorder)
                 TextField("E-Mail", text: $email)
+                    .textFieldStyle(.roundedBorder)
                 TextField("Phone number", text: $phoneNumber)
+                    .textFieldStyle(.roundedBorder)
                 Button("Register") {
                     if (!firstName.isEmpty
                         && !lastName.isEmpty
@@ -50,7 +54,7 @@ struct Onboarding: View {
                         UserDefaults.standard.set(true, forKey: keyNewsletter)
                         isLoggedIn = true
                     }
-                }
+                }.buttonStyle(.bordered) 
             }
             .padding()
             .onAppear {

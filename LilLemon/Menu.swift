@@ -9,16 +9,30 @@ import SwiftUI
 import CoreData
 
 struct Menu: View {
+    @State var searchField = ""
     @Environment(\.managedObjectContext) private var viewContext
     @State var menuShown = false
+    @State var startSearch = false
     
     var body: some View {
         NavigationStack {
             VStack {
-                Text("Little Lemon")
-                Text("Chicago")
-                Text("This is a cute family restaurant with mediterranian food")
-                
+                VStack(alignment: .leading) {
+                    Hero()
+                    Button {
+                        startSearch.toggle()
+                    } label: {
+                        Image(systemName:  "magnifyingglass.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 50, height: 50)
+                            .foregroundStyle(.black, .gray)
+                    }
+                    if startSearch {
+                        TextField("Search menu", text: $searchField)
+                            .textFieldStyle(.roundedBorder)
+                    }
+                }.padding()
                 FetchedObjects() { (dishes: [Dish]) in
                     List {
                         ForEach(dishes) { dish in
@@ -28,7 +42,6 @@ struct Menu: View {
                         }
                     }
                 }
-                .navigationTitle("Menu")
                 .listStyle(.grouped)
             }
             
@@ -39,7 +52,6 @@ struct Menu: View {
             }
         }
     }
-    
 }
 
 #Preview {
