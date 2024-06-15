@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-let keyFirstName = "keyFirstName";
-let keyLastName = "keyLastName";
+let keyFirstName = "keyFirstName"
+let keyLastName = "keyLastName"
 let keyEmail = "keyEmail"
 let keyIsLoggedIn = "keyIsLoggedIn"
 let keyPhoneNumber = "keyPhoneNumber"

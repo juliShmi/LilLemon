@@ -24,8 +24,8 @@ struct Hero: View {
                     .scaledToFill()
                     .frame(width: 170, height: 170)
                     .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/, style: .continuous))
-                
             }
+            
         }
     }
 }

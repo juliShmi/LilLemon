@@ -18,6 +18,7 @@ struct UserProfile: View {
     @State var passwordChanges = UserDefaults.standard.bool(forKey: "keyPasswordChanges")
     @State var specialOffers = UserDefaults.standard.bool(forKey: "keySpecialOffers")
     @State var newsletter = UserDefaults.standard.bool(forKey: "keyNewsletter")
+    @State var isLoggedOut = false
     
     @Environment(\.presentationMode) var presentation
     
@@ -67,8 +68,15 @@ struct UserProfile: View {
                 VStack {
                     Button("Log out") {
                         UserDefaults.standard.set(false, forKey: "keyIsLoggedIn")
+                        isLoggedOut = true
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .navigationDestination(isPresented: $isLoggedOut) {
+                        Onboarding().navigationBarHidden(true)
+                    }
+                    .onTapGesture {
                         self.presentation.wrappedValue.dismiss()
-                    }.buttonStyle(.borderedProminent)
+                    }
                     HStack {
                         Button("Discard changes") {
                             firstName = UserDefaults.standard.string(forKey: "keyFirstName") ?? ""

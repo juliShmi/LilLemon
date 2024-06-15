@@ -9,7 +9,6 @@ import SwiftUI
 
 struct OrderForDelivery: View {
     
-    //starters, mains, desserts, drinks
     @Binding var isStarters: Bool
     @Binding var isMains: Bool
     @Binding   var isDesserts: Bool
@@ -27,11 +26,8 @@ struct OrderForDelivery: View {
         }
     }
 }
-//
-//#Preview {
-//    @State var isStarters = true
-//    @State var isMains = true
-//     @State   var isDesserts = true
-//      @State  var isDrinks = true
-//    OrderForDelivery(isStarters: $isStarters, isMains: $isMains, isDesserts: $isDesserts, isDrinks: $isDrinks)
-//}
+
+#Preview {
+
+    OrderForDelivery(isStarters: .constant(true), isMains: .constant(true), isDesserts: .constant(true), isDrinks: .constant(true))
+}
