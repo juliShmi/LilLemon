@@ -29,6 +29,7 @@
 		DF8FC57C2C1A2E2B00917CDF /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC57B2C1A2E2B00917CDF /* UserProfile.swift */; };
 		DF8FC57E2C1C8ECD00917CDF /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC57D2C1C8ECD00917CDF /* Hero.swift */; };
 		DF8FC5802C1CA2B400917CDF /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC57F2C1CA2B400917CDF /* Header.swift */; };
+		DF8FC5822C1DA18800917CDF /* OrderForDelivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8FC5812C1DA18800917CDF /* OrderForDelivery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		DF8FC57B2C1A2E2B00917CDF /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		DF8FC57D2C1C8ECD00917CDF /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		DF8FC57F2C1CA2B400917CDF /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		DF8FC5812C1DA18800917CDF /* OrderForDelivery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderForDelivery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				DF8FC57B2C1A2E2B00917CDF /* UserProfile.swift */,
 				DF8FC57D2C1C8ECD00917CDF /* Hero.swift */,
 				DF8FC57F2C1CA2B400917CDF /* Header.swift */,
+				DF8FC5812C1DA18800917CDF /* OrderForDelivery.swift */,
 			);
 			path = LilLemon;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				BB20B2722C18B47700ED5CF1 /* LilLemonApp.swift in Sources */,
 				DF8FC57E2C1C8ECD00917CDF /* Hero.swift in Sources */,
 				DF8FC5782C1A0EB500917CDF /* DishItem.swift in Sources */,
+				DF8FC5822C1DA18800917CDF /* OrderForDelivery.swift in Sources */,
 				BB20B2B42C18D43000ED5CF1 /* Menu.swift in Sources */,
 				DF8FC57A2C1A29F800917CDF /* HomePage.swift in Sources */,
 				BB20B2BD2C18D7FC00ED5CF1 /* FetchedObjects.swift in Sources */,
