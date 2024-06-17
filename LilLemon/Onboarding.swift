@@ -29,6 +29,7 @@ struct Onboarding: View {
     
     var body: some View {
         NavigationStack {
+            Hero()
             VStack {
                 TextField("First name", text: $firstName)
                     .textFieldStyle(.roundedBorder)
@@ -57,6 +58,7 @@ struct Onboarding: View {
                         isLoggedIn = true
                     }
                 }.buttonStyle(ButtonStyleYellow())
+                    .padding()
             
                 
             }.foregroundColor(.black)
