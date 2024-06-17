@@ -16,18 +16,18 @@ struct OrderForDelivery: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Order for delivery!").bold().font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            Text("Order for delivery!").bold().font(.title2)
             HStack {
                 Toggle("Starters", isOn: $isStarters)
                 Toggle("Mains", isOn: $isMains)
                 Toggle("Desserts", isOn: $isDesserts)
                 Toggle("Drinks", isOn: $isDrinks)
-            }.toggleStyle(.button)
-        }
+            }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                .toggleStyle(CustomToggleOrder())
+        }.padding()
     }
 }
 
 #Preview {
-
     OrderForDelivery(isStarters: .constant(true), isMains: .constant(true), isDesserts: .constant(true), isDrinks: .constant(true))
 }

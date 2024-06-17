@@ -10,26 +10,28 @@ import SwiftUI
 struct Header: View {
     var body: some View {
         NavigationStack {
-            HStack {
-                Spacer()
-                Image("LittleLemonHeader")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 50)
-                Spacer()
-                NavigationLink(destination: UserProfile(), label: {
-                    Image("profile-image-placeholder")
+            VStack {
+                HStack {
+                    Spacer()
+                    Image("LittleLemonHeader")
                         .resizable()
-                        .scaledToFill()
-                        .frame(width: 50, height: 50)
-                        .clipShape(Circle())
-                        .overlay(Circle().stroke(.yellow, lineWidth: 2))
-                        .padding(.trailing)
+                        .scaledToFit()
+                        .frame(width: 200, height: 50)
+                    Spacer()
+                    NavigationLink(destination: UserProfile(), label: {
+                        Image("profile-image-placeholder")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(.yellow, lineWidth: 2))
+                            .padding()
+                    }
+                    )
                 }
-                )
             }
         }.padding(.bottom)
-            .frame(maxHeight: 70)
+            .frame(maxHeight: 100)
          
     }
 }

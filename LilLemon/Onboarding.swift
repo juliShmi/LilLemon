@@ -36,8 +36,10 @@ struct Onboarding: View {
                     .textFieldStyle(.roundedBorder)
                 TextField("E-Mail", text: $email)
                     .textFieldStyle(.roundedBorder)
+                    .keyboardType(.emailAddress)
                 TextField("Phone number", text: $phoneNumber)
                     .textFieldStyle(.roundedBorder)
+                    .keyboardType(.decimalPad)
                 Button("Register") {
                     if (!firstName.isEmpty
                         && !lastName.isEmpty
@@ -54,8 +56,11 @@ struct Onboarding: View {
                         UserDefaults.standard.set(true, forKey: keyNewsletter)
                         isLoggedIn = true
                     }
-                }.buttonStyle(.bordered) 
-            }
+                }.buttonStyle(ButtonStyleYellow())
+            
+                
+            }.foregroundColor(.black)
+                .font(.custom("Karla", size: 18))
             .padding()
             .onAppear {
                 if UserDefaults.standard.bool(forKey: "keyIsLoggedIn") {

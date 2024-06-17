@@ -14,12 +14,12 @@ struct DishItem: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(dish.title!).font(.title2)
+            Text(dish.title!).font(.sectionTitle())
             HStack {
                 VStack(alignment: .leading){
                     Text("$\(dish.price!)")
                     Text(dish.dishDescription!)
-                }
+                }.font(.sectionCategories())
                 
                 Spacer()
                 AsyncImage(url: URL(string: dish.image!)) { image in

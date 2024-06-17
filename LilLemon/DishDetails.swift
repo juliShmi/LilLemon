@@ -25,8 +25,7 @@ struct DishDetails: View {
             .frame(minHeight: 150)
             
             Text(dish.dishDescription!).padding()
-            
-          //  Button("Add to order") {}.buttonStyle(.borderedProminent)
+                .font(.sectionTitle())
             Spacer()
         }
         .navigationTitle(dish.title!)

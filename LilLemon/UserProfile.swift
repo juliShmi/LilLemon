@@ -31,38 +31,40 @@ struct UserProfile: View {
                         .scaledToFit()
                         .clipShape(Circle())
                         .overlay(Circle().stroke(.yellow, lineWidth: 2))
-                        .frame(width: 150, height: 150)
-                    Button("Change") {}.buttonStyle(.bordered)
-                    Button("Remove"){}.buttonStyle(.bordered)
+                        .frame(width: 120, height: 120)
+                    Button("Change") {}.buttonStyle(ButtonStylePrimaryColor1())
+                    Button("Remove"){}.buttonStyle(ButtonStylePrimaryColorReverse())
                 }
             }
             Section("Name") {
-                TextField("First name", text: $firstName)
+                TextField("", text: $firstName)
                     .textFieldStyle(.roundedBorder)
             }
             Section("Last name") {
-                TextField("Last name", text: $lastName)
+                TextField("", text: $lastName)
                     .textFieldStyle(.roundedBorder)
             }
             Section("E-Mail") {
-                TextField("E-Mail", text: $email)
+                TextField("", text: $email)
                     .textFieldStyle(.roundedBorder)
             }
             Section("Phone number") {
-                TextField("Phone number", text: $phoneNumber)
+                TextField("", text: $phoneNumber)
                     .textFieldStyle(.roundedBorder)
             }
             Spacer()
             Section("Email notifications") {
                 Toggle("Order Statuses", isOn: $orderStatus)
-                    .toggleStyle(CheckToggleStyle())
+                    .toggleStyle(CustomToggleCheckMark())
                 Toggle("Password changes", isOn: $passwordChanges)
-                    .toggleStyle(CheckToggleStyle())
+                    .toggleStyle(CustomToggleCheckMark())
                 Toggle("Special offers", isOn: $specialOffers)
-                    .toggleStyle(CheckToggleStyle())
+                    .toggleStyle(CustomToggleCheckMark())
                 Toggle("Newsletter", isOn: $newsletter)
-                    .toggleStyle(CheckToggleStyle())
-            }.font(.custom("Markazi text", fixedSize: 18))
+                    .toggleStyle(CustomToggleCheckMark())
+            }.font(.leadText())
+                .foregroundColor(Color("Highlight2"))
+                .padding(3)
             Spacer()
             Section {
                 VStack {
@@ -70,7 +72,7 @@ struct UserProfile: View {
                         UserDefaults.standard.set(false, forKey: "keyIsLoggedIn")
                         isLoggedOut = true
                     }
-                    .buttonStyle(.borderedProminent)
+                    .buttonStyle(ButtonStyleYellow())
                     .navigationDestination(isPresented: $isLoggedOut) {
                         Onboarding().navigationBarHidden(true)
                     }
@@ -88,7 +90,7 @@ struct UserProfile: View {
                             passwordChanges = UserDefaults.standard.bool(forKey: "keyPasswordChanges")
                             specialOffers = UserDefaults.standard.bool(forKey: "keySpecialOffers")
                             newsletter = UserDefaults.standard.bool(forKey: "keyNewsletter")
-                        }.buttonStyle(.bordered)
+                        }.buttonStyle(ButtonStylePrimaryColorReverse())
                         Button("Save changes") {
                             UserDefaults.standard.set(firstName, forKey: keyFirstName);
                             UserDefaults.standard.set(lastName, forKey: keyLastName);
@@ -98,7 +100,7 @@ struct UserProfile: View {
                             UserDefaults.standard.set(specialOffers, forKey: keySpecialOffers)
                             UserDefaults.standard.set(passwordChanges, forKey: keyPasswordChanges)
                             UserDefaults.standard.set(newsletter, forKey: keyNewsletter)
-                        }.buttonStyle(.borderedProminent)
+                        }.buttonStyle(ButtonStylePrimaryColor1())
                     }
                 }
             }
@@ -108,22 +110,4 @@ struct UserProfile: View {
 
 #Preview {
     UserProfile()
-}
-
-struct CheckToggleStyle: ToggleStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        Button {
-            configuration.isOn.toggle()
-        } label: {
-            Label {
-                configuration.label
-            } icon: {
-                Image(systemName: configuration.isOn ? "checkmark.square.fill" : "square")
-                    .foregroundStyle(configuration.isOn ? Color.green : .green)
-                    .accessibility(label: Text(configuration.isOn ? "Checked" : "Unchecked"))
-                    .imageScale(.large)
-            }
-        }
-        .buttonStyle(.plain)
-    }
 }

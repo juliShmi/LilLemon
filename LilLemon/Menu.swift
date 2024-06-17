@@ -10,6 +10,7 @@ import CoreData
 
 struct Menu: View {
     
+    
     @Environment(\.managedObjectContext) private var viewContext
     @State var menuShown = false
     
@@ -39,7 +40,7 @@ struct Menu: View {
         NavigationStack {
             VStack {
                 VStack(alignment: .leading) {
-                    Hero()
+                    Hero().frame(maxHeight: 200)
                     Button {
                         startSearch.toggle()
                     } label: {
@@ -48,7 +49,7 @@ struct Menu: View {
                             .scaledToFit()
                             .frame(width: 50, height: 50)
                             .foregroundStyle(.black, .gray)
-                    }
+                    }.padding(.horizontal)
                     if startSearch {
                         TextField("Search menu", text: $searchField)
                             .textFieldStyle(.roundedBorder)
@@ -57,7 +58,7 @@ struct Menu: View {
                             }
                     }
                     OrderForDelivery(isStarters: $isStarters, isMains: $isMains, isDesserts: $isDesserts, isDrinks: $isDrinks)
-                }.padding()
+                }
                 FetchedObjects(predicate: buildPredicate(), sortDescriptors: buildSortdescriptions()) { (dishes: [Dish]) in
                     List {
                         ForEach(dishes) { dish in
